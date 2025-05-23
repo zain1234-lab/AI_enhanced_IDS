@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="alerts-container">
+    <h2>Security Alerts</h2>
+    <div class="controls">
+        <div class="refresh-control">
+            <button id="refresh-alerts-btn" class="btn btn-refresh"><i class="icon-refresh"></i> Refresh</button>
+        </div>
+        <div class="filter-control">
+            <input type="text" id="alert-filter" placeholder="Filter alerts...">
+            <select id="severity-filter">
+                <option value="all">All Severities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="alert-table-container">
+        <table class="data-table" id="alerts-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Attack Type</th>
+                    <th>Confidence</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="alerts-body">
+                <tr>
+                    <td colspan="6" class="empty-table">No alerts yet</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="alert-details-container" id="alert-details">
+        <h3>Alert Details</h3>
+        <div class="alert-details-content">
+            <p>Select an alert to view details</p>
+        </div>
+    </div>
+    
+    <div class="feedback-container" id="feedback-container" style="display: none;">
+        <h3>Provide Feedback</h3>
+        <div class="feedback-content">
+            <p>Is this alert correct?</p>
+            <div class="feedback-buttons">
+                <button id="feedback-yes" class="btn btn-success">Yes (True Positive)</button>
+                <button id="feedback-no" class="btn btn-danger">No (False Positive)</button>
+                <button id="feedback-cancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/alerts.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="statistics-container">
+    <h2>System Statistics</h2>
+    
+    <div class="statistics-grid">
+        <div class="statistics-card">
+            <div class="card-header">
+                <h3>Traffic Statistics</h3>
+            </div>
+            <div class="card-content">
+                <div class="stat-row">
+                    <div class="stat-label">Total Packets:</div>
+                    <div class="stat-value" id="stat-total-packets">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Packets/Second:</div>
+                    <div class="stat-value" id="stat-packets-per-second">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Total Data:</div>
+                    <div class="stat-value" id="stat-total-data">0 KB</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Data Rate:</div>
+                    <div class="stat-value" id="stat-data-rate">0 KB/s</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="statistics-card">
+            <div class="card-header">
+                <h3>Detection Statistics</h3>
+            </div>
+            <div class="card-content">
+                <div class="stat-row">
+                    <div class="stat-label">Total Alerts:</div>
+                    <div class="stat-value" id="stat-total-alerts">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Alert Rate:</div>
+                    <div class="stat-value" id="stat-alert-rate">0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">False Positives:</div>
+                    <div class="stat-value" id="stat-false-positives">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">False Negatives:</div>
+                    <div class="stat-value" id="stat-false-negatives">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="statistics-card">
+            <div class="card-header">
+                <h3>Model Statistics</h3>
+            </div>
+            <div class="card-content">
+                <div class="stat-row">
+                    <div class="stat-label">Active Model:</div>
+                    <div class="stat-value" id="stat-active-model">None</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Model Accuracy:</div>
+                    <div class="stat-value" id="stat-model-accuracy">0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Precision:</div>
+                    <div class="stat-value" id="stat-model-precision">0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Recall:</div>
+                    <div class="stat-value" id="stat-model-recall">0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">F1 Score:</div>
+                    <div class="stat-value" id="stat-model-f1">0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="statistics-card">
+            <div class="card-header">
+                <h3>System Statistics</h3>
+            </div>
+            <div class="card-content">
+                <div class="stat-row">
+                    <div class="stat-label">Uptime:</div>
+                    <div class="stat-value" id="stat-uptime">0:00:00</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Memory Usage:</div>
+                    <div class="stat-value" id="stat-memory-usage">0 MB</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">CPU Usage:</div>
+                    <div class="stat-value" id="stat-cpu-usage">0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Active Profile:</div>
+                    <div class="stat-value" id="stat-active-profile">Default</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="statistics-charts">
+        <div class="chart-container">
+            <h3>Traffic Distribution</h3>
+            <div class="chart" id="traffic-distribution-chart"></div>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Attack Distribution</h3>
+            <div class="chart" id="attack-distribution-chart"></div>
+        </div>
+    </div>
+    
+    <div class="model-performance-container">
+        <h3>Model Performance History</h3>
+        <div class="chart" id="model-performance-chart"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/statistics.js') }}"></script>
+{% endblock %}

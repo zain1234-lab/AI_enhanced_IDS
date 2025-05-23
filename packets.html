@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="packets-container">
+    <h2>Network Packets</h2>
+    <div class="controls">
+        <div class="refresh-control">
+            <button id="refresh-btn" class="btn btn-refresh"><i class="icon-refresh"></i> Refresh</button>
+            <label class="auto-refresh-label">
+                <input type="checkbox" id="auto-refresh-checkbox">
+                Auto Refresh
+            </label>
+        </div>
+        <div class="filter-control">
+            <input type="text" id="packet-filter" placeholder="Filter packets...">
+            <select id="protocol-filter">
+                <option value="all">All Protocols</option>
+                <option value="6">TCP</option>
+                <option value="17">UDP</option>
+                <option value="1">ICMP</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="packet-table-container">
+        <table class="data-table" id="packets-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Protocol</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="packets-body">
+                <tr>
+                    <td colspan="6" class="empty-table">No packets captured yet</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="packet-details-container" id="packet-details">
+        <h3>Packet Details</h3>
+        <div class="packet-details-content">
+            <p>Select a packet to view details</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/packets.js') }}"></script>
+{% endblock %}

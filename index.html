@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Enhanced Intrusion Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="AI-IDS Logo">
+            <h1>AI-IDS</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link" data-page="dashboard"><i class="icon-dashboard"></i> Dashboard</a></li>
+                <li><a href="{{ url_for('packets') }}" class="nav-link" data-page="packets"><i class="icon-packets"></i> Packets</a></li>
+                <li><a href="{{ url_for('alerts') }}" class="nav-link" data-page="alerts"><i class="icon-alerts"></i> Alerts</a></li>
+                <li><a href="{{ url_for('statistics') }}" class="nav-link" data-page="statistics"><i class="icon-statistics"></i> Statistics</a></li>
+                <li><a href="{{ url_for('settings') }}" class="nav-link" data-page="settings"><i class="icon-settings"></i> Settings</a></li>
+            </ul>
+        </nav>
+        <div class="status-indicator">
+            <span id="status-dot" class="status-dot offline"></span>
+            <span id="status-text">Offline</span>
+        </div>
+        <div class="control-buttons">
+            <button id="start-btn" class="btn btn-start"><i class="icon-play"></i> Start</button>
+            <button id="stop-btn" class="btn btn-stop" disabled><i class="icon-stop"></i> Stop</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="content-container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

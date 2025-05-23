@@ -1,0 +1,97 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Dashboard</h2>
+    <div class="last-updated">Last updated: <span id="last-updated-time">Never</span></div>
+    
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Total Packets</h3>
+                <div class="card-icon packet-icon"></div>
+            </div>
+            <div class="card-content">
+                <div class="big-number" id="total-packets">0</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Alerts</h3>
+                <div class="card-icon alert-icon"></div>
+            </div>
+            <div class="card-content">
+                <div class="big-number" id="total-alerts">0</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Attack Rate</h3>
+                <div class="card-icon rate-icon"></div>
+            </div>
+            <div class="card-content">
+                <div class="big-number" id="attack-rate">0%</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Models Loaded</h3>
+                <div class="card-icon model-icon"></div>
+            </div>
+            <div class="card-content">
+                <div class="big-text" id="models-loaded">No</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard-charts">
+        <div class="chart-container">
+            <h3>Traffic Over Time</h3>
+            <div class="chart" id="traffic-chart"></div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #3498db;"></div>
+                    <div class="legend-label">Total Traffic</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #e74c3c;"></div>
+                    <div class="legend-label">Alerts</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Attack Types</h3>
+            <div class="chart" id="attack-types-chart"></div>
+        </div>
+    </div>
+    
+    <div class="recent-alerts-container">
+        <h3>Recent Alerts</h3>
+        <table class="data-table" id="recent-alerts-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Attack Type</th>
+                    <th>Confidence</th>
+                </tr>
+            </thead>
+            <tbody id="recent-alerts-body">
+                <tr>
+                    <td colspan="5" class="empty-table">No alerts yet</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
